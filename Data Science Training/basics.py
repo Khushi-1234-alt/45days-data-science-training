@@ -10,3 +10,9 @@ print (type(c))       # string
 # primitive: int, float, etc
 # non primitive: str, list, tuples, dictionary 
 
+## creating a function for user define module 
+def addfunction(a,b):
+    return a+b
+
+     
+
