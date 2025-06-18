@@ -3,6 +3,8 @@ try:
     s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
     print("Socket created")
     ## should be same network of file 
+    ## sender m ip address receiver ka jaega 
+    ## or reciever m khud ka aaega 
     ip_add = "192.168.8.197"
     port = 8887
     complete_add = (ip_add,port)
