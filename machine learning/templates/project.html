@@ -1,165 +1,162 @@
-<!DOCTYPE html>
-<html lang="n">
-<head>
-    <meta charset="UTF-9">
-    <meta name="viewport" content="width=device-width, initial-scale=11.0">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bike Price Prediction</title>
-    <link rel="stylesheet" href="stle.css">
-</head>
-<style>
-    body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 1;
-}
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-header {
-    background-color: #f0f0f0;
-    padding: 20px;
+        body {
+        background: linear-gradient(120deg, #f4f4f4, #e2e2e2);
+        color: #333;
+        min-height: 100vh;
+        }
 
-    text-align: center;
-}
+        header {
+        background-color: #1e90ff;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        }
 
-h1 {
-    font-size: 2pm;
-}
+        h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        }
 
-main {
-    padding: 20px;
-    width: 50%;
-    margin: 0 auto;
-}
+        .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
 
-section {
-    margin-bottom: 20px;
-}
+        .container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #1e90ff;
+        }
 
-.description {
-    text-align: center;
-}
+        label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+        }
 
-.form-container {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 5px;
-}
+        input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        }
 
-.form-container label {
-    display: block;
-    margin-bottom: 5px;
-}
+        button {
+        margin-top: 20px;
+        width: 100%;
+        background-color: #1e90ff;
+        color: white;
+        padding: 12px;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        }
 
-.form-container input,
-.form-container select,
-.form-container textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 15px;
-}
+        button:hover {
+        background-color: #007acc;
+        }
 
-.form-container button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        .result {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 20px;
+        color: green;
+        }
 
-.form-container button:hover {
-    background-color: #3e8e41;
-}
+        footer {
+        text-align: center;
+        padding: 20px;
+        background: #222;
+        color: #ccc;
+        margin-top: 40px;
+        }
+    </style>
+    </head>
+    <body>
 
-.disclaimer {
-    font-size: 0
-}
-.Prediction{
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-}
-</style>
-<body>
     <header>
         <h1>Bike Price Prediction</h1>
     </header>
-    <main>
-        <section class="description">
-            <h2>Welcome to the Bike Price Prediction Tool!</h2>
-            <p>This website helps you estimate the value of your used bike based on various factors.</p>
-        </section>
-        <section class="form-container">
-            <h3>Enter Bike Details</h3>
-            
-<form action="{{ url_for('predict') }}" method="post">
 
-            
-                <label for="brand">Brand:</label>
-                <select name="brand_name" id="fifth" required="required">
+    <div class="container">
+        <h2>Enter Bike Details</h2>
+        <form action="{{ url_for('predict') }}" method="post">
+        <label for="brand_name">Brand</label>
+        <select name="brand_name" required>
+            <option value="" disabled selected>Select brand</option>
+            <option value="Royal Enfield">Royal Enfield</option>
+            <option value="KTM">KTM</option>
+            <option value="Bajaj">Bajaj</option>
+            <option value="Harley-Davidson">Harley-Davidson</option>
+            <option value="Yamaha">Yamaha</option>
+            <option value="Honda">Honda</option>
+            <option value="Suzuki">Suzuki</option>
+            <option value="TVS">TVS</option>
+            <option value="Kawasaki">Kawasaki</option>
+            <option value="Hyosung">Hyosung</option>
+            <option value="Benelli">Benelli</option>
+            <option value="Mahindra">Mahindra</option>
+            <option value="Triumph">Triumph</option>
+            <option value="Ducati">Ducati</option>
+            <option value="BMW">BMW</option>
+            <option value="Rajdoot">Rajdoot</option>
+            <option value="Indian">Indian</option>
+            <option value="LML">LML</option>
+            <option value="Yezdi">Yezdi</option>
+            <option value="MV">MV</option>
+            <option value="Ideal">Ideal</option>
+        </select>
 
-                        <option value="Royal Enfield" >Royal Enfield</option>
-                        <option value="KTM">KTM</option>
-                        <option value="Bajaj">Bajaj</option>
-                        <option value="Harley">Harley-Davidson</option>
-                        <option value="Yamaha">Yamaha</option>
-                        <option value="Honda">Honda</option>
-                        <option value="Suzuki">Suzuki</option>
-                        <option value="TVS">TVS</option>
-                        <option value="Kawasaki">Kawasaki</option>
-                        <option value="Hyosung">Hyosung</option>
-                        <option value="Benelli">Benelli</option>
-                        <option value="Mahindra">Mahindra</option>
-                        <option value="Triumph">Triumph</option>
-                        <option value="Ducati">Ducati</option>
-                        <option value="BMW">BMW</option>
-                        <option value="Rajdoot">Rajdoot</option>
-                        <option value="Indian">Indian</option>
-                        <option value="LML">LML</option>
-                        <option value="Yezdi">Yezdi</option>
-                        <option value="MV">MV</option>
-                        <option value="Ideal">Ideal</option>
-        </select><br><br>
-                
-                <label for="owner">owner:</label>
-                <select name="owner" id="fifth" required="required">
-                <option value="1">first owner</option>
-                <option value="2">second owner</option>
-                <option value="3">third owner</option>
-                <option value="4">fourth owner</option>
-                
-        </select><br><br>
-            
-                
-                <label for="age">age:</label>
-                <input type="text" name = 'age' required>
-                
-                <br><br>
-                <label for="power">power:</label>
-                <input type="text" name = 'power' required>
-<br><br>
+        <label for="owner">Owner</label>
+        <select name="owner" required>
+            <option value="1">First Owner</option>
+            <option value="2">Second Owner</option>
+            <option value="3">Third Owner</option>
+            <option value="4">Fourth Owner</option>
+        </select>
 
+        <label for="age">Age (in years)</label>
+        <input type="text" name="age" required>
 
-                <label for="kms_driven">kms_driven</label>
-                <input type="text" name ="kms_driven"required>
-                <br><br>
-                </select>
-                
-                <button type="submit">Predict Price</button>
-            </form>
-            <!-- <p class="disclaimer">**Disclaimer:** This is a basic website for demonstration purposes only. A real prediction model would require additional features and machine learning integration.</p>
-        </section> -->
-        <!-- <section class="results">
-            <h2>Predicted Price</h2>
-            <p id="predicted-price">**This is where the predicted price will be displayed.**</p>
-        </section> -->
-    </main>
-    <div class="Prediction">
-    <h2>Bike Price is : {{ prediction }}</h2>
-</div>
+        <label for="power">Power (in CC)</label>
+        <input type="text" name="power" required>
+
+        <label for="kms_driven">Kilometers Driven</label>
+        <input type="text" name="kms_driven" required>
+
+        <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+        <p><strong>Predicted Bike Price:</strong> ₹ {{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+
     <footer>
-        <!-- <p>&copy;2024 Bike Price Prediction</p> -->
+        &copy; 2025 Bike Price Prediction. All rights reserved.
     </footer>
-</body>
-</html>
+
+    </body>
+    </html>

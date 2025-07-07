@@ -77,6 +77,25 @@ def home():  ## function hmesha same naam se bnega
 def project():  
     return render_template('project.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+        
+        # You can print or log the message, or store it in DB later
+        print(f"Contact form submitted by {name}, {email}: {message}")
+        
+        # Show success message
+        return render_template('contact.html', submitted=True)
+    
+    return render_template('contact.html', submitted=False)
+
 @app.route('/predict',methods=['POST'])
 def predict():
     if request.method == "POST":
